@@ -1,0 +1,68 @@
+package P7_Dita;
+import java.util.Scanner;
+
+public class Latihan1 {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Program Input Nilai Mahasiswa");
+
+        System.out.print("Nama Mahasiswa : ");
+        String nama = input.nextLine();
+
+        System.out.print("Masukkan Presensi (total pertemuan): ");
+        double presensi = input.nextDouble();
+
+        System.out.print("Masukkan Kehadiran (hadir berapa kali): ");
+        double kehadiran = input.nextDouble();
+
+        System.out.print("Masukkan Nilai Tugas: ");
+        double tugas = input.nextDouble();
+
+        System.out.print("Masukkan Nilai UTS : ");
+        double uts = input.nextDouble();
+
+        System.out.print("Masukkan Nilai UAS: ");
+        double uas = input.nextDouble();
+
+        double nilaiKehadiran = (kehadiran / presensi) * 100;
+
+        double totalNilai = (nilaiKehadiran * 0.10) + (tugas * 0.20) + (uts * 0.30) + (uas * 0.40);
+
+        String grade;
+        String status;
+
+        if (totalNilai >= 85) {
+            grade = "A";
+            status = "LULUS (Sangat Memuaskan)";
+        } else if (totalNilai >= 75) {
+            grade = "B";
+            status = "LULUS (Baik)";
+        } else if (totalNilai >= 60) {
+            grade = "C";
+            status = "LULUS (Cukup)";
+        } else if (totalNilai >= 50) {
+            grade = "D";
+            status = "TIDAK LULUS (Kurang)";
+        } else {
+            grade = "E";
+            status = "TIDAK LULUS (Gagal)";
+        }
+
+        System.out.println("\n-------------------------------");
+        System.out.println("HASIL AKHIR");
+        System.out.println("Nama Mahasiswa   : " + nama);
+        System.out.println("Jumlah Kehadiran : " + kehadiran + " dari " + presensi);
+        System.out.println("Nilai Kehadiran  : " + nilaiKehadiran);
+        System.out.println("Nilai Tugas      : " + tugas);
+        System.out.println("Nilai UTS        : " + uts);
+        System.out.println("Nilai UAS        : " + uas);
+        System.out.println("Total Nilai      : " + totalNilai);
+        System.out.println("Grade            : " + grade);
+        System.out.println("Status           : " + status);
+        System.out.println("---------------------------------");
+
+        input.close();
+    }
+}
