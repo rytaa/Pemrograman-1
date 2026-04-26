@@ -2,7 +2,7 @@ package P7_Dita;
 
 import java.util.Scanner;
 
-public class Latihan1 {
+public class Latihan {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
