@@ -1,0 +1,57 @@
+package P5_Dita;
+
+import java.util.Scanner;
+
+public class Latihan {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("=== Sistem Manajemen Inventaris Gudang ===");
+
+        System.out.print("Apakah Anda memiliki akses petugas? (true/false): ");
+        boolean punyaAkses = input.nextBoolean();
+
+        System.out.print("Masukkan total stok barang di gudang saat ini: ");
+        int stokGudang = input.nextInt();
+
+        System.out.print("Masukkan jumlah barang yang ingin diambil: ");
+        int jumlahAmbil = input.nextInt();
+
+        System.out.println("\nMenghubungkan ke database...\n");
+
+        System.out.println("--- 1. Verifikasi Keamanan ---");
+        if (punyaAkses) {
+            System.out.println("Sistem: Akses diterima. Identitas petugas terverifikasi.");
+        }
+
+        System.out.println("\n--- 2. Validasi Pengambilan Barang ---");
+        if (punyaAkses && stokGudang >= jumlahAmbil) {
+            stokGudang = stokGudang - jumlahAmbil;
+            System.out.println("Sistem: Barang berhasil dikeluarkan dari gudang.");
+            System.out.println("Sistem: Sisa stok di rak saat ini: " + stokGudang + " unit.");
+        } else if (!punyaAkses) {
+            System.out.println("Sistem: PERINGATAN! Anda tidak memiliki izin untuk mengambil barang.");
+        } else {
+            System.out.println("Sistem: GAGAL. Jumlah stok di gudang tidak mencukupi.");
+        }
+
+        System.out.println("\n--- 3. Laporan Skala Distribusi ---");
+        if (jumlahAmbil >= 100) {
+            System.out.println("Status: Pengambilan skala BESAR (Distributor Utama).");
+        } 
+        else if (jumlahAmbil >= 50) {
+            System.out.println("Status: Pengambilan skala MENENGAH (Toko Cabang).");
+        } 
+        else if (jumlahAmbil >= 1) {
+            System.out.println("Status: Pengambilan skala KECIL (Retail/Eceran).");
+        } 
+        else {
+            System.out.println("Status: Tidak ada aktivitas pengambilan barang.");
+        }
+
+        System.out.println("\n=== Selesai - Log Sistem Tersimpan ===");
+        
+        input.close();
+    }
+}
