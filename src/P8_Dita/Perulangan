@@ -1,0 +1,27 @@
+package P8_Dita;
+import java.util.Scanner;
+
+public class Perulangan {
+    
+    public static void main (String[] args) {
+        
+        System.out.println("== FOR ===");
+        for (int i = 7; i<= 3; i++) {
+            System.out.println("Iterasi:" + i);
+        }
+        
+        System.out.println("\n=== WHILE ===");
+        int j = 3;
+        while (j <= 8) {
+            System.out.println("Iterasi:" + j);
+            j++;
+        }
+        
+        System.out.println("\n=== DO-WHILE ===");
+        int k = 1;
+        do {
+            System.out.println("Iterasi:" + k);
+            k++;
+        } while (k <= 6);
+    }
+}
