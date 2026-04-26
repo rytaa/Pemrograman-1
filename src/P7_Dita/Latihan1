@@ -1,68 +1,50 @@
 package P7_Dita;
+
 import java.util.Scanner;
 
 public class Latihan1 {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        
+        final float TOTAL_PERTEMUAN = 21;
+        float syaratMinimalMasuk = TOTAL_PERTEMUAN * 0.75f; 
+        
+        System.out.println("=== Sistem Penilaian Mahasiswa ===");
+        
+        System.out.print("Masukkan total kehadiran mahasiswa: ");
+        float kehadiran = input.nextFloat();
 
-        System.out.println("Program Input Nilai Mahasiswa");
-
-        System.out.print("Nama Mahasiswa : ");
-        String nama = input.nextLine();
-
-        System.out.print("Masukkan Presensi (total pertemuan): ");
-        double presensi = input.nextDouble();
-
-        System.out.print("Masukkan Kehadiran (hadir berapa kali): ");
-        double kehadiran = input.nextDouble();
-
-        System.out.print("Masukkan Nilai Tugas: ");
-        double tugas = input.nextDouble();
-
-        System.out.print("Masukkan Nilai UTS : ");
-        double uts = input.nextDouble();
-
-        System.out.print("Masukkan Nilai UAS: ");
-        double uas = input.nextDouble();
-
-        double nilaiKehadiran = (kehadiran / presensi) * 100;
-
-        double totalNilai = (nilaiKehadiran * 0.10) + (tugas * 0.20) + (uts * 0.30) + (uas * 0.40);
-
-        String grade;
-        String status;
-
-        if (totalNilai >= 85) {
-            grade = "A";
-            status = "LULUS (Sangat Memuaskan)";
-        } else if (totalNilai >= 75) {
-            grade = "B";
-            status = "LULUS (Baik)";
-        } else if (totalNilai >= 60) {
-            grade = "C";
-            status = "LULUS (Cukup)";
-        } else if (totalNilai >= 50) {
-            grade = "D";
-            status = "TIDAK LULUS (Kurang)";
+        System.out.print("Masukkan skor nilai akhir: ");
+        float nilai = input.nextFloat();
+        
+        System.out.println("\n--- Hasil Evaluasi ---");
+        
+        if (kehadiran >= syaratMinimalMasuk) {
+            String grade = ""; 
+            
+            if (nilai >= 85) {
+                grade = "A (Istimewa)";
+            } else if (nilai >= 75) {
+                grade = "B (Sangat Baik)";
+            } else if (nilai >= 65) {
+                grade = "C (Cukup)";
+            } else if (nilai >= 50) {
+                grade = "D (Kurang)";
+            } else {
+                grade = "E (Gagal)";
+            }
+            
+            System.out.println("Status Kehadiran : Memenuhi Syarat (" + kehadiran + " hari)");
+            System.out.println("Nilai Kumulatif  : " + nilai);
+            System.out.println("Grade Akhir      : " + grade);
+            
         } else {
-            grade = "E";
-            status = "TIDAK LULUS (Gagal)";
+            // Jika kehadiran di bawah 75%
+            System.out.println("Status: TIDAK LULUS");
+            System.out.println("Alasan: Persentase kehadiran kurang dari 75% (Minimal: " + syaratMinimalMasuk + " hari).");
         }
-
-        System.out.println("\n-------------------------------");
-        System.out.println("HASIL AKHIR");
-        System.out.println("Nama Mahasiswa   : " + nama);
-        System.out.println("Jumlah Kehadiran : " + kehadiran + " dari " + presensi);
-        System.out.println("Nilai Kehadiran  : " + nilaiKehadiran);
-        System.out.println("Nilai Tugas      : " + tugas);
-        System.out.println("Nilai UTS        : " + uts);
-        System.out.println("Nilai UAS        : " + uas);
-        System.out.println("Total Nilai      : " + totalNilai);
-        System.out.println("Grade            : " + grade);
-        System.out.println("Status           : " + status);
-        System.out.println("---------------------------------");
-
+        
         input.close();
     }
 }
