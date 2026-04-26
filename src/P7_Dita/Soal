@@ -1,0 +1,65 @@
+package P7_Dita;
+import java.util.Scanner;
+
+public class Soal {
+    public static void main(String[] args) {
+        Scanner inputan = new Scanner(System.in);
+
+        System.out.println("=== SISTEM INFORMASI AKADEMIK ===");
+        
+        System.out.print("Input Total Pertemuan Kelas : ");
+        int totalPertemuan = inputan.nextInt();
+        
+        System.out.print("Input Jumlah Kehadiran      : ");
+        int hadir = inputan.nextInt();
+        
+        System.out.print("Nilai Tugas          : ");
+        double nTugas = inputan.nextDouble();
+        
+        System.out.print("Nilai UTS           : ");
+        double nUts = inputan.nextDouble();
+        
+        System.out.print("Nilai UAS            : ");
+        double nUas = inputan.nextDouble();
+
+        double rasioHadir = ((double) hadir / totalPertemuan) * 100;
+        
+        double nilaiFinal = (rasioHadir * 0.10) + (nTugas * 0.20) + (nUts * 0.30) + (nUas * 0.40);
+        
+        String indexHuruf = "";
+
+        if (rasioHadir >= 75.0) {
+            if (nilaiFinal >= 80) {
+                indexHuruf = "A";
+            } else if (nilaiFinal >= 70) {
+                indexHuruf = "B";
+            } else if (nilaiFinal >= 60) {
+                indexHuruf = "C";
+            } else if (nilaiFinal >= 55) {
+                indexHuruf = "D";
+            } else {
+                indexHuruf = "E";
+            }
+        } else {
+            System.out.println("\n[PERINGATAN] Presensi Kurang: " + String.format("%.1f", rasioHadir) + "%");
+            
+            if (nilaiFinal >= 55) {
+                nilaiFinal = 55.0;
+                indexHuruf = "D (Penalti Kehadiran)";
+            } else {
+                indexHuruf = "E";
+            }
+        }
+
+        // Output Ringkasan Nilai
+        System.out.println("\n========================================");
+        System.out.println("REKAP NILAI AKHIR");
+        System.out.println("----------------------------------------");
+        System.out.printf("Persentase Absensi : %.2f%%\n", rasioHadir);
+        System.out.printf("Skor Kumulatif     : %.2f\n", nilaiFinal);
+        System.out.println("Grade Akhir        : " + indexHuruf);
+        System.out.println("========================================");
+
+        inputan.close();
+    }
+}
