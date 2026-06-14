@@ -1,7 +1,7 @@
 package P4_Dita;
 import java.util.Scanner;
 
-public class LatihanTekananDarah {
+public class Tugas_Tekanandarah {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
